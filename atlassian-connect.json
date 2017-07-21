@@ -1,0 +1,137 @@
+{
+  "key": "my-add-on",
+  "name": "Vote",
+  "description": "Voting add-on",
+  "vendor": {
+    "name": "Wutevs",
+    "url": "https://www.hipchat.com"
+  },
+  "links": {
+    "self": "{{localBaseUrl}}/atlassian-connect.json",
+    "homepage": "{{localBaseUrl}}"
+  },
+  "capabilities": {
+    "hipchatApiConsumer": {
+      "scopes": [
+        "send_notification",
+        "view_room"
+      ],
+      "avatar": {
+        "url": "{{localBaseUrl}}/img/logo.png",
+        "url@2x": "{{localBaseUrl}}/img/logo.png"
+      }
+    },
+    "installable": {
+      "callbackUrl": "{{localBaseUrl}}/installable"
+    },
+    "configurable": {
+      "url": "{{localBaseUrl}}/config"
+    },
+    "webhook": [{
+      "url": "{{localBaseUrl}}/webhook",
+      "pattern": "^/hello",
+      "event": "room_message",
+      "name": "Hello!",
+      "authentication": "jwt"
+    }, {
+      "url": "{{localBaseUrl}}/webhook-vote",
+      "pattern": "^/vote",
+      "event": "room_message",
+      "name": "Vote",
+      "authentication": "jwt"
+    }, {
+      "url": "{{localBaseUrl}}/webhook-get-votes",
+      "pattern": "^/get-votes",
+      "event": "room_message",
+      "name": "Get Votes",
+      "authentication": "jwt"
+    }, {
+      "url": "{{localBaseUrl}}/webhook-remove-vote",
+      "pattern": "^/remove-vote",
+      "event": "room_message",
+      "name": "Remove Votes",
+      "authentication": "jwt"
+    }, {
+      "url": "{{localBaseUrl}}/webhook-poll",
+      "pattern": "^/poll",
+      "event": "room_message",
+      "name": "Add Poll",
+      "authentication": "jwt"
+    }, {
+      "url": "{{localBaseUrl}}/webhook-get-polls",
+      "pattern": "^/get-polls",
+      "event": "room_message",
+      "name": "List Polls",
+      "authentication": "jwt"
+    }, {
+      "url": "{{localBaseUrl}}/webhook-remove-poll",
+      "pattern": "^/remove-poll",
+      "event": "room_message",
+      "name": "Remove Poll",
+      "authentication": "jwt"
+    }, {
+      "url": "{{localBaseUrl}}/webhook-help",
+      "pattern": "^/help",
+      "event": "room_message",
+      "name": "Help",
+      "authentication": "jwt"
+    }],
+    "glance": [
+      {
+        "name": {
+          "value": "Hello!"
+        },
+        "queryUrl": "{{localBaseUrl}}/glance",
+        "key": "sample.glance",
+        "target": "sample.sidebar",
+        "icon": {
+          "url": "{{localBaseUrl}}/img/logo.png",
+          "url@2x": "{{localBaseUrl}}/img/logo.png"
+        }
+      }
+    ],
+    "webPanel": [
+      {
+        "key": "sample.sidebar",
+        "name": {
+          "value": "Hello Sidebar!"
+        },
+        "location": "hipchat.sidebar.right",
+        "url": "{{localBaseUrl}}/sidebar"
+      }
+    ],
+    "dialog": [
+      {
+        "key": "sample.dialog",
+        "title": {
+          "value": "Hello Dialog!"
+        },
+        "url": "{{localBaseUrl}}/dialog",
+        "options": {
+          "style": "normal",
+          "primaryAction": {
+            "name": {
+              "value": "Say Hello!"
+            },
+            "key": "sample.dialog.action",
+            "enabled": true
+          },
+          "size": {
+            "width": "400px",
+            "height": "200px"
+          }
+        }
+      }
+    ],
+    "action": [
+      {
+        "key": "sample.action",
+        "name": {
+          "value": "Open Hello Dialog!"
+        },
+        "target": "sample.dialog",
+        "location": "hipchat.input.action"
+      }
+    ]
+  }
+}
